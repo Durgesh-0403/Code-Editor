@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Editor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .editor {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .editor-section {
+      width: 22%;
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+    }
+    .editor-section label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      text-align: center;
+      font-size: 18px;
+    }
+    textarea {
+      height: 400px;
+      border: 2px solid red;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 16px;
+      resize: none;
+    }
+    iframe {
+      height: 400px;
+      border: 2px solid #ff4b2b;
+      border-radius: 10px;
+      background-color: rgb(255, 205, 205);
+    }
+  </style>
+</head>
+<body>
+  <h1>Code Editor</h1>
+
+  <div class="editor">
+    <div class="editor-section">
+      <label for="html">HTML</label>
+      <textarea id="html" placeholder="Enter HTML Code Here..." onkeyup="runCode()"></textarea>
+    </div>
+    <div class="editor-section">
+      <label for="css">CSS</label>
+      <textarea id="css" placeholder="Enter CSS Code Here..." onkeyup="runCode()"></textarea>
+    </div>
+    <div class="editor-section">
+      <label for="js">JavaScript</label>
+      <textarea id="js" placeholder="Enter JS Code Here..." onkeyup="runCode()"></textarea>
+    </div>
+    <div class="editor-section">
+      <label for="output">Output</label>
+      <iframe id="output"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function runCode() {
+      const html = document.getElementById("html").value;
+      const css = "<style>" + document.getElementById("css").value + "</style>";
+      const js = "<script>" + document.getElementById("js").value + "<\/script>";
+      const output = document.getElementById("output");
+      output.srcdoc = html + css + js;
+    }
+  </script>
+</body>
+</html>
